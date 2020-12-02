@@ -1,4 +1,4 @@
-class Ground {
+class ground {
     constructor(x,y,w,h){
         var options={
             isStatic:true,
@@ -15,8 +15,8 @@ display(){
     push();
     translate(pos.x,pos.y);
     rectMode(CENTER);
-    rect(0,0,1000,20);
     fill("yellow");
+    rect(0,0,1000,20); 
     pop();
 }
 }
