@@ -1,57 +1,62 @@
-class Dustbin {
-    constructor(x,y,width,height){
+class dustbin {
+    constructor(x,y){
+    
     this.x=x;
     this.y=y;
-    this.width=width;
-    this.height=height;    
-    leftwallBody = Bodies.rectangle(x,y,width,height,{isStatic:true});
-    World.add(world, leftwallBody);
+    this.dustbinWidth=200;
+    this.dustbinHeight=100;
+    this.wallThickness=20;
+    this.angle=0;
 
-    this.x=x;
-    this.y=y;
-    this.width=width;
-    this.height=height;
-    rightwallBody = Bodies.rectangle(x,y,width,height,{isStatic:true});
-    World.add(world, rightwallBody);
+    
+    this.bottomBody=Bodies.rectangle(this.x, this.y, this.dustbinWidth, this.wallThickness, {isStatic:true});
+    this.leftwallBody=Bodies.rectangle(this.x-this.dustbinWidth/2, this.y-this.dustbinHeight/2,this.wallThickness,{isStatic:true});
+    Matter.Body.setAngle(this.leftwallBody, this.angle);
 
-    this.x=x;
-    this.y=y;
-    this.width=width;
-    this.height=height;
-    bottomBody = Bodies.rectangle(x,y,width,height, {isStatic:true});
-    World.add(world, bottomBody);
+    this.rightwallBody=Bodies.rectangle(this.x+this.dustbinWidth/2, this.y-this.dustbinHeight/2,this.wallThickness, this.dustbinHeight, {isStatic:true});
+    Matter.Body.setAngle(this.rightwallBody, -1*this.angle);
+    World.add(world, this.bottomBody);
+    World.add(world, this.leftwallBody);
+    World.add(world, this.rightwallBody);
 
-}display(){
-        var posBottom = this.bottomBody.position;
-        var posLeft= this.leftwallBody.position;
-        var posRight= this.rightwallBody.position;
+    }display(){
+      
+      var posBottom=this.bottomBody.position;
+      var posLeft=this.leftwallBody.position;
+      var posRight=this.rightwallBody.position;
 
-        push();
-        translate(posBottom.x, posBottom.y);
-        stroke(255);
-        angleMode(RADIANS);
-        fill(255);
-        rotate(this.angle);
-        rect(0,0,this.wallThickness,this.dustbinHeight);
-        pop();
+      push();
+      translate(posLeft.x, posLeft.y);
+      rectMode(CENTER);
+      strokeWeight(4);
+      angleMode(RADIANS);
+      fill(255);
+      stroke(255);
+      rotate(this.angle);
+      rect(0,0, this.wallThickness, this.dustbinHeight);
+      pop();
+       
+      push();
+      translate(posRight.x, posRight.y);
+      rectMode(CENTER);
+      strokeWeight(4);
+      angleMode(RADIANS);
+      fill(255);
+      stroke(255);
+      rotate(this.angle);
+      rect(0,0, this.wallThickness, this.dustbinHeight );
+      pop();  
 
-        push();
-        translate(posRight.x, posRight.y);
-        stroke(255);
-        angleMode(RADIANS);
-        fill(255);
-        rotate(this.angle);
-        rect(0,0,this.wallThickness,this.dustbinHeight);
-        pop();
-
-        push();
-        translate(posLeft.x, posLeft.y);
-        stroke(255);
-        angleMode(RADIANS);
-        fill(255);
-        rotate(this.angle);
-        rect(0,0,this.wallThickness,this.dustbinHeight);
-        pop();
+      push();
+      translate(posBottom.x, posBottom.y);
+      rectMode(CENTER);
+      strokeWeight(4);
+      angleMode(RADIANS);
+      fill(255);
+      stroke(255);
+      rotate(this.angle);
+      rect(0,0,this.wallThickness,this.dustbinHeight );
+      pop(); 
 
 
 
