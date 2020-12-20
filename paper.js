@@ -9,7 +9,7 @@ class paper {
         this.x=x;
         this.y=y;
         this.r=r;
-        this.body= Bodies.circle(x,y,r,[options],[55]);
+        this.body= Bodies.circle(x,y,r,options,55);
         World.add(world,this.body);
     }   display(){
         
