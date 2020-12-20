@@ -6,12 +6,15 @@ class paper {
             friction:0.5,
             density:1.2
         }
+        
+        this.body= Bodies.circle(x,y,r,options,55);
         this.x=x;
         this.y=y;
         this.r=r;
-        this.body= Bodies.circle(x,y,r,options,55);
         World.add(world,this.body);
-    }   display(){
+    }  
+    
+    display(){
         
         var pos = this.body.position;
         var angle = this.body.angle;
@@ -27,3 +30,5 @@ class paper {
     
     }
     }
+       
+
